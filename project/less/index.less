@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.flex {
+  flex: 1;
+}
+li {
+  list-style: none;
+}
+// .el-block {
+//   display: block;
+// }
+.el-none {
+  display: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.box {
+  background: url(../imgs/bg1.jpg) no-repeat center;
+  background-size: cover;
+  display: flex;
+  height: 100%; //暂时定高
+  min-width: 1280px;
+  width: 100%;
+  color: #fff;
+  //数据展示区
+  .data-viewport {
+    position: relative;
+    border: 50px solid gray;
+    border-image: url(../imgs/border.png) 51 38 20 132;
+    box-sizing: border-box;
+    // background-color: skyblue;
+  }
+  //图表展示区
+  .echarts-viewport {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    // background-color: pink;
+    .bar-view {
+      position: relative;
+      border: 30px solid orangered;
+      border-image: url(../imgs/border.png) 51 38 20 132;
+      box-sizing: border-box;
+      height: 100%;
+      //   background-color: gray;
+      .bar {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .line-view {
+      position: relative;
+      border: 30px solid skyblue;
+      border-image: url(../imgs/border.png) 51 38 20 132;
+      box-sizing: border-box;
+      height: 100%;
+      .line {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.inner {
+  position: absolute;
+  box-sizing: border-box;
+  overflow: hidden;
+  top: -30px;
+  right: -30px;
+  bottom: -30px;
+  left: -30px;
+  padding: 10px;
+}
+// 新增数据区
+.add-data {
+  display: flex;
+  // background-color: pink;
+  height: 60px;
+  line-height: 60px;
+  .info {
+    display: flex;
+    justify-content: center;
+    input {
+      width: 200px;
+      height: 40px;
+      border-radius: 10px;
+      outline: none;
+      text-indent: 1em;
+    }
+  }
+  .add-btn {
+    outline: none;
+    color: #fff;
+    width: 150px;
+    height: 50px;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .add-btn:hover {
+    transform: scale(1.1);
+  }
+}
+
+//表格区
+.data-table {
+  .title {
+    background-color: #1e90ff;
+    display: flex;
+    text-align: center;
+    // justify-content: center;
+    height: 30px;
+    line-height: 30px;
+    span {
+      flex: 1;
+      border: 1px solid #a09e9e;
+    }
+  }
+}
+
+// 数据模板样式
+.item {
+  display: flex;
+  text-align: center;
+  // justify-content: center;
+  height: 40px;
+  line-height: 40px;
+  .metadata {
+    flex: 1;
+    border: 1px solid #a09e9e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:last-child {
+      position: relative;
+    }
+    input {
+      height: 30px;
+      width: 80px;
+      border-radius: 5px;
+      text-indent: 1em;
+    }
+    i {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-color: #fff;
+    }
+    i:hover {
+      cursor: pointer;
+    }
+    .upd {
+      left: 30%;
+      background: url(../imgs/upd.png);
+      background-size: cover;
+    }
+    .del {
+      right: 30%;
+      background: url(../imgs/del.png);
+      background-size: cover;
+    }
+    .yes {
+      left: 30%;
+      background: url(../imgs/yes.png);
+      background-size: cover;
+    }
+    .no {
+      right: 30%;
+      background: url(../imgs/no.png);
+      background-size: cover;
+    }
+  }
+}
