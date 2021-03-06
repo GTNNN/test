@@ -44,8 +44,12 @@ function showData() {
 showData();
 // ========================================
 // 这是图表数据函数  传入类型就行 会返回其中的option
-function getOption(text, type, xArr, numArr) {
+function getOption(text, type, xArr, numArr, names) {
   let option = {
+    tooltip: {
+      show: true,
+      trigger: "axis",
+    },
     grid: {
       left: "7%",
       top: "13%",
@@ -97,6 +101,7 @@ function getOption(text, type, xArr, numArr) {
     },
     series: [
       {
+        name: names,
         data: numArr,
         type: type,
         itemStyle: {
@@ -108,19 +113,19 @@ function getOption(text, type, xArr, numArr) {
   return option;
 }
 // 图表数据更新函数==============
-function upDate(text, type, Value) {
+function upDate(text, type, Value, names) {
   // 获取数组中的X轴数据
   let xArr = arr.map((item) => item.nameValue);
   // 获取数组中的评分数据
   let numArr = arr.map((item) => item[Value]);
   // 获取与数组信息对应的图标数据
-  let option = getOption(text, type, xArr, numArr);
+  let option = getOption(text, type, xArr, numArr, names);
   return option;
 }
 // 图表刷新
 function refresh() {
-  barEcharts.setOption(upDate("评分图示", "bar", "scoreValue"));
-  lineEcharts.setOption(upDate("薪资图示", "line", "salaryValue"));
+  barEcharts.setOption(upDate("评分图示", "bar", "scoreValue", "评分"));
+  lineEcharts.setOption(upDate("薪资图示", "line", "salaryValue", "薪资"));
 }
 // ----------------------------------------
 // 柱状图
@@ -128,7 +133,7 @@ $(function () {
   // 实例化echarts对象
   barEcharts = echarts.init($(".bar-view .bar")[0]);
 
-  let option = upDate("评分图示", "bar", "scoreValue");
+  let option = upDate("评分图示", "bar", "scoreValue", "评分");
   // 绘制图表
   barEcharts.setOption(option);
 
@@ -139,7 +144,7 @@ $(function () {
 // 折线图
 $(function () {
   lineEcharts = echarts.init($(".line")[0]);
-  let option = upDate("薪资图示", "line", "salaryValue");
+  let option = upDate("薪资图示（单位：万）", "line", "salaryValue", "薪资");
   lineEcharts.setOption(option);
   $(window).on("resize", function () {
     lineEcharts.resize();
@@ -207,9 +212,8 @@ $(function () {
       return;
     }
     $(this)
-      .parent()
-      .siblings()
-      .children("input")
+      .parents(".item")
+      .find("input")
       .removeClass("el-none")
       .siblings(".info")
       .addClass("el-none");
@@ -242,13 +246,7 @@ $(function () {
   // 保存键
   $(".data").on("click", ".yes", function () {
     let index = $(this).parents(".item").attr("idx");
-    let tab0Val = $(this)
-      .parent()
-      .siblings()
-      .children("input")
-      .eq(0)
-      .val()
-      .trim();
+    let tab0Val = $(this).parents(".item").find("input").eq(0).val().trim();
     let tab1Val = $(this)
       .parent()
       .siblings()
