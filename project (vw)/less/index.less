@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.flex {
+  flex: 1;
+}
+li {
+  list-style: none;
+}
+// .el-block {
+//   display: block;
+// }
+.el-none {
+  display: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.box {
+  background: url(../imgs/bg1.jpg) no-repeat center;
+  background-size: cover;
+  display: flex;
+  height: 100%; //暂时定高
+  min-width: 1280px;
+  width: 100%;
+  color: #fff;
+  //数据展示区
+  .data-viewport {
+    margin: 0.5208vw;
+    margin-right: 0;
+    position: relative;
+    border: 2.6042vw solid gray;
+    border-image: url(../imgs/border.png) 51 38 20 132;
+    border-width: 2.6563vw 1.9792vw 1.0417vw 6.875vw;
+    box-sizing: border-box;
+    // background-color: skyblue;
+  }
+  //图表展示区
+  .echarts-viewport {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    // background-color: pink;
+    .bar-view {
+      margin: 0.5208vw;
+      margin-bottom: 0.2604vw;
+      position: relative;
+      border: 1.5625vw solid orangered;
+      border-image: url(../imgs/border.png) 51 38 20 132;
+      border-width: 2.6563vw 1.9792vw 1.0417vw 6.875vw;
+      box-sizing: border-box;
+      height: 100%;
+      //   background-color: gray;
+      .bar {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .line-view {
+      margin: 0.5208vw;
+      margin-top: 0.2604vw;
+      position: relative;
+      border: 1.5625vw solid skyblue;
+      border-image: url(../imgs/border.png) 51 38 20 132;
+      border-width: 2.6563vw 1.9792vw 1.0417vw 6.875vw;
+      box-sizing: border-box;
+      height: 100%;
+      .line {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.inner {
+  position: absolute;
+  box-sizing: border-box;
+  overflow: hidden;
+  top: -2.6563vw;
+  right: -1.9792vw;
+  bottom: -1.0417vw;
+  left: -6.875vw;
+  padding: 0.5208vw;
+}
+// 新增数据区
+.add-data {
+  display: flex;
+  // background-color: pink;
+  height: 3.125vw;
+  line-height: 3.125vw;
+  .info {
+    display: flex;
+    justify-content: center;
+    input {
+      width: 10.4167vw;
+      height: 2.0833vw;
+      border-radius: 0.5208vw;
+      outline: none;
+      text-indent: 1em;
+    }
+  }
+  .add-btn {
+    outline: none;
+    color: #fff;
+    width: 7.8125vw;
+    height: 2.6042vw;
+    border: 0.1563vw solid #fff;
+    border-radius: 0.2604vw;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .add-btn:hover {
+    transform: scale(1.1);
+  }
+}
+
+//表格区
+.data-table {
+  .title {
+    background-color: #1e90ff;
+    display: flex;
+    text-align: center;
+    // justify-content: center;
+    height: 1.5625vw;
+    line-height: 1.5625vw;
+    span {
+      flex: 1;
+      border: 0.0521vw solid #a09e9e;
+    }
+  }
+}
+
+// 数据模板样式
+.item {
+  display: flex;
+  text-align: center;
+  // justify-content: center;
+  height: 2.0833vw;
+  line-height: 2.0833vw;
+  .metadata {
+    flex: 1;
+    border: 0.0521vw solid #a09e9e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:last-child {
+      position: relative;
+    }
+    input {
+      height: 1.5625vw;
+      width: 4.1667vw;
+      border-radius: 0.2604vw;
+      text-indent: 1em;
+    }
+    i {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.0417vw;
+      height: 1.0417vw;
+      background-color: #fff;
+    }
+    i:hover {
+      cursor: pointer;
+    }
+    .upd {
+      left: 30%;
+      background: url(../imgs/upd.png);
+      background-size: cover;
+    }
+    .del {
+      right: 30%;
+      background: url(../imgs/del.png);
+      background-size: cover;
+    }
+    .yes {
+      left: 30%;
+      background: url(../imgs/yes.png);
+      background-size: cover;
+    }
+    .no {
+      right: 30%;
+      background: url(../imgs/no.png);
+      background-size: cover;
+    }
+  }
+}
